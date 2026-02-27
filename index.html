@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExamGuard AI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>ExamGuard AI</h1>
+    <p>Anti-cheat exam system for teachers and students.</p>
+  </header>
+
+  <main>
+    <section class="card" id="teacher-auth">
+      <h2>Teacher Login</h2>
+      <form id="login-form">
+        <label>Email <input type="email" id="teacher-email" required placeholder="teacher@example.com" /></label>
+        <label>Password <input type="password" id="teacher-password" required placeholder="••••••••" /></label>
+        <button type="submit">Login as Teacher</button>
+      </form>
+      <small>Demo credentials: <strong>teacher@example.com / examguard123</strong></small>
+      <p id="auth-message" class="message"></p>
+    </section>
+
+    <section class="card hidden" id="teacher-panel">
+      <h2>Teacher Monitor</h2>
+      <div class="monitor-grid">
+        <div>
+          <h3>Create Exam</h3>
+          <form id="exam-form">
+            <label>Exam Title <input id="exam-title" required placeholder="Midterm 1" /></label>
+            <label>Question Type
+              <select id="question-type">
+                <option value="multiple_choice">Multiple Choice</option>
+                <option value="identification">Identification</option>
+                <option value="enumeration">Enumeration</option>
+                <option value="true_false">True or False</option>
+              </select>
+            </label>
+            <label>Question Prompt
+              <textarea id="question-prompt" required placeholder="Enter question"></textarea>
+            </label>
+            <label id="choices-wrapper">Choices (comma-separated for multiple choice)
+              <input id="question-choices" placeholder="A, B, C, D" />
+            </label>
+            <label>Answer Key <input id="question-answer" required placeholder="Correct answer" /></label>
+            <button type="submit">Add Question</button>
+          </form>
+          <button id="publish-exam">Publish Exam Link</button>
+          <p id="exam-link" class="message"></p>
+        </div>
+        <div>
+          <h3>Questions</h3>
+          <ul id="questions-list"></ul>
+          <h3>Student Behavior Monitor</h3>
+          <ul id="monitor-log"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="student-panel">
+      <h2>Student Exam Access</h2>
+      <form id="join-form">
+        <label>Exam Link Code <input id="exam-code" required placeholder="Paste teacher code" /></label>
+        <label>Student Name <input id="student-name" required placeholder="Your name" /></label>
+        <button type="submit">Start Exam</button>
+      </form>
+      <p class="message" id="join-message"></p>
+
+      <div id="exam-area" class="hidden">
+        <h3 id="active-exam-title"></h3>
+        <form id="student-exam-form"></form>
+        <button id="submit-student-exam">Submit Answers</button>
+        <p id="submission-message" class="message"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
